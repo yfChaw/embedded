@@ -2,3 +2,4 @@ image
 raspberry
 .vscode
 src/endianness
+**/build

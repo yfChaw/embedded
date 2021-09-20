@@ -18,7 +18,7 @@ A build system is where the code will be developed and compiled.
 
 A target system is where the compiled code will be run.
 
-### Run dockerised build system
+### Run dockerised build system (Build System)
 
 After docker build: `docker-compose up` 
 
@@ -35,6 +35,16 @@ qemu-system-arm -M versatilepb -dtb versatile-pb.dtb -cpu arm1176 -kernel kernel
 
 ```
 <!-- -nographic  -->
+
+### Copy the executable file to virtual embedded system
+
+`scp -P <portNo> <local-file-path> <target-system-path>`
+
+___
+
+
+
+
 
 
 

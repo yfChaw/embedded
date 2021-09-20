@@ -7,7 +7,8 @@ RUN apt update -y && \
     dumb-init \
     vim \
     crossbuild-essential-armel \
-    ssh
+    ssh \
+    cmake
 
 WORKDIR /workspace/src
 

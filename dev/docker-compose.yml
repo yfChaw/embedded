@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+  cpp-build-env:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: cpp-build:latest
+    container_name: cpp-build
+    # command: bash
+    command: arm-linux-gnueabi-g++ 1-1endianness.cpp -o endianness
+
+    # devices:
+    #   - /dev/kvm:/dev/kvm
+    
+    # ports:
+    #   - 3022:3022
+
+    volumes:
+      - ../src:/workspace/src
+    #   - ../image:/workspace/image
+
+    network_mode: host
+
+#     networks:
+#       - default
+
+# networks:
+#   default:
+#     name: rpi-net
+    # - rpi-net
+    
+    # environment:
+    #   - RAM_SIZE=2048 
+    #   - IMAGE_PATH=/workspace/image/ubuntu.img
+
+
+# commands in docker container:
+
+#to check if any processor is available for virtualisation
+# $ egrep -c '(vmx|svm)' /proc/cpuinfo 
+
+# check if system can use KVM acceleration 
+# $ kvm-ok
+
+# check virtual architecture
+# $ uname -a
+
+# qemu-system-x86_64  $PORTMAP -m $RAM_SIZE -localtime -smp 2 -k en-us -vnc :0 -hda $IMAGE_PATH -nographic

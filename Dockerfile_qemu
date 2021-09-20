@@ -1,0 +1,25 @@
+FROM ubuntu:20.04
+
+RUN apt update -y && \
+    apt install -y curl vim dumb-init zip qemu-system-arm inetutils-ping qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+    # qemu
+# RUN apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+
+WORKDIR /workspace
+RUN mkdir -p raspberry && \
+    cd raspberry && \
+    curl -L https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-05-28/2021-05-07-raspios-buster-armhf-lite.zip -o rpi-buster.zip && \
+    curl -L https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/kernel-qemu-4.14.79-stretch -o kernel-qemu-stretch && \
+    curl -L https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/versatile-pb.dtb -o versatile-pb.dtb && \
+    unzip rpi-buster.zip && \
+    cd raspberry
+
+
+ENTRYPOINT ["dumb-init", "--"]
+
+
+
+# on arch bare metal
+# pacman -S qemu qemu-arch-extra
+# qemu-system-arm -M versatilepb -dtb versatile-pb.dtb -cpu arm1176 -kernel kernel-qemu-stretch -m 256 -drive file=2021-05-07-raspios-buster-armhf-lite.img,format=raw -append "rw console=ttyAMA0 rootfstype=ext4 root=/dev/sda2 loglevel=8" -net user,hostfwd=tcp::22023-:22,hostfwd=tcp::9090-:9090 -net nic -nographic -serial stdio
+

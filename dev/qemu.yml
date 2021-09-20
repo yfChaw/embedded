@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  rpi-qemu:
+    build:
+      context: ..
+      dockerfile: Dockerfile_qemu
+    image: rpi-qemu:latest
+    container_name: rpi-qemu
+    command: bash
+
+    privileged: true
+
+    volumes:
+      - ../src:/workspace/src
+
+    devices:
+      - /dev/kvm:/dev/kvm
+      
+
+    ports:
+      - 22:22023
+      - 9090:9090
+
+    networks:
+      - default
+
+networks:
+  default:
+    name: rpi-net
+

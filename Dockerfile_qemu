@@ -14,7 +14,6 @@ RUN mkdir -p raspberry && \
     unzip rpi-buster.zip && \
     cd raspberry
 
-
 ENTRYPOINT ["dumb-init", "--"]
 
 

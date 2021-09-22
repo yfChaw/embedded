@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.5.1)
+project(pointer_1)
+add_executable(ptr_1 ptr_1.c)
+
+# support for cross-compilation
+#set (CMAKE_C_COMPILER /usr/bin/arm-linux-gnueabi-gcc)
+#set (CMAKE_CXX_COMPILER /usr/bin/arm-linux-gnueabi-g++)
+#set (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+#set (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+#set (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+#set (CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)

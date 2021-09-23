@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5.1)
 project(c_thread_1)
 add_executable(pthread1 pthread_1.c)
 
-set(THREADS_PREFER_PTHREAD_FLAG ON)
+set(THREADS_PREFER_PTHREAD_FLAG ON) # maybe dont need this setting
 target_link_libraries(pthread1 pthread)
 # https://stackoverflow.com/questions/49768454/whats-the-differences-between-pthread-and-pthread-options-in-cmake?noredirect=1&lq=1
 
